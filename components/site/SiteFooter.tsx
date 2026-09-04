@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { GithubIcon } from "@/components/ui/Icons";
+
 import { SmartLink } from "@/components/ui/SmartLink";
 import { site } from "@/content/site";
 
@@ -69,15 +71,25 @@ export function SiteFooter() {
           <p>
             © {year} {brand.legalName}. Бүх эрх хуулиар хамгаалагдсан.
           </p>
-          <ul className="flex gap-6">
-            {footer.legal.map((link) => (
-              <li key={link.href}>
-                <SmartLink href={link.href} className="transition-colors hover:text-navy">
-                  {link.label}
-                </SmartLink>
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <ul className="flex gap-6">
+              {footer.legal.map((link) => (
+                <li key={link.href}>
+                  <SmartLink href={link.href} className="transition-colors hover:text-navy">
+                    {link.label}
+                  </SmartLink>
+                </li>
+              ))}
+            </ul>
+
+            <SmartLink
+              href={footer.developer.href}
+              className="inline-flex items-center gap-2 transition-colors hover:text-navy"
+            >
+              <GithubIcon />
+              {footer.developer.label}
+            </SmartLink>
+          </div>
         </div>
       </div>
     </footer>

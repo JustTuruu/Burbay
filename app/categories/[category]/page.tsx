@@ -31,7 +31,7 @@ export default async function CategoryPage({ params }: PageProps<"/categories/[c
   return (
     <>
       <section className="border-b border-line bg-sand">
-        <div className="shell py-12 lg:py-16">
+        <div className="shell pb-9 pt-11 lg:pb-11 lg:pt-14">
           <p className="eyebrow text-slate">Burbay</p>
           <h1 className="display-lg mt-4">{meta.label}</h1>
           <p className="lede mt-4 max-w-[42rem]">{meta.description}</p>
@@ -39,7 +39,7 @@ export default async function CategoryPage({ params }: PageProps<"/categories/[c
         </div>
       </section>
 
-      <section className="section bg-stone">
+      <section className="bg-stone pb-16 pt-11 lg:pb-24 lg:pt-14">
         <div className="shell">
           <ProductGrid products={items} />
         </div>

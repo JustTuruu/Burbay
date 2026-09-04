@@ -176,6 +176,10 @@ export const site = {
         { label: "Facebook", href: "https://facebook.com" },
       ],
     },
+    developer: {
+      label: "Developed by JustTuruu",
+      href: "https://github.com/JustTuruu",
+    },
     legal: [
       { label: "Нууцлалын бодлого", href: "#privacy" },
       { label: "Үйлчилгээний нөхцөл", href: "#terms" },

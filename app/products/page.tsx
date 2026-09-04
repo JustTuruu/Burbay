@@ -13,7 +13,7 @@ export default function ProductsPage() {
   return (
     <>
       <section className="border-b border-line bg-sand">
-        <div className="shell py-12 lg:py-16">
+        <div className="shell pb-9 pt-11 lg:pb-11 lg:pt-14">
           <p className="eyebrow text-slate">Burbay</p>
           <h1 className="display-lg mt-4">Бүх бүтээгдэхүүн</h1>
           <p className="lede mt-4 max-w-[42rem]">
@@ -22,7 +22,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {categoryOrder.map((key) => {
+      {categoryOrder.map((key, index) => {
         const items = products.filter((product) => product.category === key);
         if (items.length === 0) return null;
 
@@ -31,7 +31,7 @@ export default function ProductsPage() {
             key={key}
             id={key}
             aria-labelledby={`${key}-heading`}
-            className="section scroll-mt-24 bg-stone"
+            className={`scroll-mt-24 bg-stone pb-16 lg:pb-24 ${index === 0 ? "pt-11 lg:pt-14" : "pt-16 lg:pt-24"}`}
           >
             <div className="shell">
               <div className="max-w-[42rem]">
