@@ -4,22 +4,14 @@ import type { ImageAsset } from "@/lib/images";
 
 type EditorialImageProps = {
   asset: ImageAsset;
-  /** next/image-д зориулсан responsive хэмжээ */
   sizes: string;
-  /** Зургийн харьцааг дарж бичих (жишээ нь "16/9") */
   ratio?: string;
-  /** cover — талбайг дүүргэж тайрна; contain — бүтэн зургийг багтаана */
   fit?: "cover" | "contain";
   className?: string;
   imageClassName?: string;
-  /** Эхний дэлгэц дэх зураг бол шууд ачаална */
   eager?: boolean;
 };
 
-/**
- * Зургийн стандарт хүрээ: харьцаа тогтмол, ачаалахаас өмнө дэвсгэр
- * өнгөтэй. Layout shift үүсгэхгүй.
- */
 export function EditorialImage({
   asset,
   sizes,

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ProductCard } from "@/components/product/ProductCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { products } from "@/content/products";
@@ -6,7 +8,6 @@ import { site } from "@/content/site";
 const { featured } = site;
 const featuredProducts = products.filter((p) => p.featured);
 
-/** Nuna-гийн бүтээгдэхүүний grid — онцлох бараанууд, дэлгэрэнгүй хуудас руу холбогдоно */
 export function FeaturedProducts() {
   return (
     <section id="featured" aria-labelledby="featured-heading" className="section bg-stone">
@@ -18,9 +19,9 @@ export function FeaturedProducts() {
               {featured.heading}
             </h2>
           </div>
-          <a href={featured.cta.href} className="text-link text-navy">
+          <Link href={featured.cta.href} className="text-link text-navy">
             {featured.cta.label}
-          </a>
+          </Link>
         </Reveal>
 
         <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">

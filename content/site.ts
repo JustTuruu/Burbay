@@ -1,12 +1,3 @@
-/**
- * Сайтын бүх текст энд төвлөрсөн байна.
- * Агуулгаа шинэчлэхдээ зөвхөн энэ файлыг засахад хангалттай —
- * компонентууд өөрчлөгдөхгүй.
- *
- * Бүтээгдэхүүн, үнэ, зураг — bolorhonkids.mn дээрх Burbay барааны
- * бодит мэдээлэл (2026-09 байдлаар). Үнэ өөрчлөгдвөл энд шинэчилнэ.
- */
-
 const STORE = "https://bolorhonkids.mn";
 
 export const site = {
@@ -30,36 +21,36 @@ export const site = {
     },
   },
 
-  /** Header-ийн таб маягийн цэс. `children` байвал dropdown гарна. */
   nav: [
-    { label: "Нүүр", href: "#top", id: "top" },
+    { label: "Нүүр", href: "/", id: "top" },
     {
       label: "Тэрэг",
-      href: "#strollers",
+      href: "/categories/strollers",
       id: "strollers",
       children: [
-        { label: "3-н хос тэрэг (3 in 1)", href: "#featured" },
-        { label: "2 хос тэрэг (2 in 1)", href: "#featured" },
-        { label: "Дан тэрэг", href: "#featured" },
-        { label: "Хөнгөн, аялалын тэрэг", href: "#featured" },
+        { label: "3-н хос тэрэг (3 in 1)", href: "/categories/strollers#3in1" },
+        { label: "2 хос тэрэг (2 in 1)", href: "/categories/strollers#2in1" },
+        { label: "Дан тэрэг", href: "/categories/strollers#single" },
+        { label: "Хөнгөн, аялалын тэрэг", href: "/categories/strollers#light" },
       ],
     },
     {
       label: "Машины суудал",
-      href: "#car-seats",
+      href: "/categories/car-seats",
       id: "car-seats",
       children: [
-        { label: "Машины суудал, 0-12 нас", href: "#featured" },
-        { label: "Суудлын өндөрлөгч", href: "#accessories" },
+        { label: "Машины суудал, 0-12 нас", href: "/categories/car-seats" },
+        { label: "Суудлын өндөрлөгч", href: "/categories/accessories" },
       ],
     },
-    { label: "Хүүхдийн манеж", href: "#beds", id: "beds" },
-    { label: "Хөлд оруулагч", href: "#walkers", id: "walkers" },
-    { label: "Хэрэгсэл", href: "#accessories", id: "accessories" },
+    { label: "Хүүхдийн манеж", href: "/categories/beds", id: "beds" },
+    { label: "Хөлд оруулагч", href: "/categories/walkers", id: "walkers" },
+    { label: "Хэрэгсэл", href: "/categories/accessories", id: "accessories" },
   ],
 
   header: {
     menu: "Цэс",
+    products: "Бүх бүтээгдэхүүн",
     close: "Цэсийг хаах",
     search: "Хайх",
     bag: "Онлайн дэлгүүр",
@@ -69,15 +60,15 @@ export const site = {
     eyebrow: "Нярайгаас 4 нас хүртэл",
     heading: "Хөдөлгөөн бүрд тав тух, аюулгүй байдал.",
     body: "Хялбар эвхэгддэг, тансаг зөөлөн материалтай Burbay тэрэг таны гэр бүлийн өдөр тутмын аяллыг хөнгөн болгоно.",
-    cta: { label: "Цуглуулга үзэх", href: "#featured" },
-    secondary: { label: "Онлайн дэлгүүр", href: `${STORE}/products?name=burbay`, external: true },
+    cta: { label: "Цуглуулга үзэх", href: "/products" },
+    secondary: { label: "Онцлох загварууд", href: "/#featured" },
   },
 
   systemBanner: {
     eyebrow: "E83 · 2 хос тэрэг",
     heading: "Нярайн ор, үндсэн суудал — нэг хүрээнд",
     body: "Нярайгаас 4 нас хүртэл хэрэглэх E83 нь хоёр тийш харуулж түрэх, хэвтэх хүртэл 3 төрлөөр налуулах боломжтой. UPF50+ халхавч, агааржуулах торон цонх, нэмэлт амортизатор. Нярайн ор, Mommy bag, хөлийн хучлага дагалдана.",
-    cta: { label: "E83 үзэх", href: `${STORE}/products/116291/781862`, external: true },
+    cta: { label: "E83 үзэх", href: "/products/e83-black" },
   },
 
   categories: {
@@ -89,7 +80,7 @@ export const site = {
         title: "Адал явдалд зориулсан",
         body:
           "Дан, 2 хос, 3 хос тэрэг — хотын явган зам, аялал, өдөр тутмын хэрэглээнд. Хамгийн хялбар хураах шийдэл, бат бөх дугуй, зөөлөн түдгэлзүүлэлт.",
-        link: { label: "Бүх тэрэг", href: `${STORE}/products?category_id=116291`, external: true },
+        link: { label: "Бүх тэрэг", href: "/categories/strollers" },
         image: "strollers",
       },
       {
@@ -97,7 +88,7 @@ export const site = {
         title: "Өсөлтөд зориулан бүтээсэн",
         body:
           "Нярайгаас 12 нас хүртэл хэрэглэх, 360° эргэдэг машины суудал. Isofix суурилуулалт, зөөлөн даавуу, олон түвшний налуу — үе шат бүрд аюулгүй.",
-        link: { label: "Машины суудал", href: `${STORE}/products?category_id=116721`, external: true },
+        link: { label: "Машины суудал", href: "/categories/car-seats" },
         image: "carSeats",
       },
       {
@@ -105,7 +96,7 @@ export const site = {
         title: "Тайван нойронд зориулсан",
         body:
           "Гэрт ч, аялалд ч хялбар эвхэгддэг манеж. Нярайгаас 4 нас хүртэл — тоглох, унтах аюулгүй орон зай.",
-        link: { label: "Хүүхдийн манеж", href: `${STORE}/products?category_id=338493`, external: true },
+        link: { label: "Хүүхдийн манеж", href: "/categories/beds" },
         image: "playpen",
       },
       {
@@ -113,7 +104,7 @@ export const site = {
         title: "Анхны алхмуудад",
         body:
           "6 сараас дээш насны хүүхдэд зориулсан тогтвортой суурьтай, хөгжүүлэх тоглоомтой хөлд оруулагч.",
-        link: { label: "Хөлд оруулагч", href: `${STORE}/products?category_id=116724`, external: true },
+        link: { label: "Хөлд оруулагч", href: "/categories/walkers" },
         image: "walker",
       },
       {
@@ -121,7 +112,7 @@ export const site = {
         title: "Юунд ч бэлэн",
         body:
           "Машины суудлын өндөрлөгч, тэрэгний аяга тогтоогч зэрэг өдөр тутмын хэрэгслүүд — аялал бүрийг хялбар болгоно.",
-        link: { label: "Хэрэгсэл", href: `${STORE}/products?category_id=156175`, external: true },
+        link: { label: "Хэрэгсэл", href: "/categories/accessories" },
         image: "booster",
       },
     ],
@@ -130,94 +121,13 @@ export const site = {
   featured: {
     eyebrow: "Онцлох",
     heading: "Хамгийн их сонирхогдож буй",
-    cta: { label: "Бүх Burbay бараа", href: `${STORE}/products?name=burbay`, external: true },
-    products: [
-      {
-        name: "E83",
-        type: "2 хос тэрэг · 0-4 нас · Black",
-        price: "1,399,000₮",
-        oldPrice: "1,499,000₮",
-        discount: "-6%",
-        image: "e83-black",
-        colors: ["#1c1c1c", "#6b3f2a", "#5a5a5a"],
-        href: `${STORE}/products/116291/781862`,
-        badge: "Бестселлер",
-      },
-      {
-        name: "PC600",
-        type: "3-н хос тэрэг · Grey",
-        price: "899,000₮",
-        oldPrice: "989,000₮",
-        discount: "-9%",
-        image: "pc600-grey",
-        colors: ["#6f6f6f", "#6f8f7a", "#b08c7a"],
-        href: `${STORE}/products/116291/899827`,
-      },
-      {
-        name: "J02",
-        type: "3-н хос тэрэг · Grey",
-        price: "1,599,000₮",
-        oldPrice: "1,699,000₮",
-        discount: "-5%",
-        image: "j02-grey",
-        colors: ["#4b4b4b"],
-        href: `${STORE}/products/116291/817856`,
-        badge: "Luxury",
-      },
-      {
-        name: "E77",
-        type: "3-н хос тэрэг · Light Grey",
-        price: "1,399,000₮",
-        oldPrice: "1,499,000₮",
-        discount: "-6%",
-        image: "e77-light-grey",
-        colors: ["#a9a9a9", "#4a4a4a"],
-        href: `${STORE}/products/116291/753701`,
-      },
-      {
-        name: "Apollo Pro",
-        type: "Машины суудал · 0-12 нас",
-        price: "589,000₮",
-        image: "apollo-pro",
-        colors: ["#c9b59a", "#1c1c1c"],
-        href: `${STORE}/products/116721/899839`,
-        badge: "Шинэ",
-      },
-      {
-        name: "Машины суудал 360°",
-        type: "0-12 нас",
-        price: "359,000₮",
-        image: "carseat-360",
-        colors: ["#1c1c1c", "#8a8a8a", "#b9a08a"],
-        href: `${STORE}/products/212820/927950`,
-      },
-      {
-        name: "Хүүхдийн манеж",
-        type: "0-4 нас",
-        price: "299,000₮",
-        oldPrice: "359,000₮",
-        discount: "-16%",
-        image: "playpen",
-        colors: ["#9a9a9a"],
-        href: `${STORE}/products/338494/924706`,
-      },
-      {
-        name: "Хөлд оруулагч",
-        type: "6 сар+",
-        price: "159,000₮",
-        oldPrice: "189,000₮",
-        discount: "-15%",
-        image: "walker",
-        colors: ["#8c8c8c"],
-        href: `${STORE}/products/116724/759387`,
-      },
-    ],
+    cta: { label: "Бүх бүтээгдэхүүн", href: "/products" },
   },
 
   statement: {
     text:
       "Бидний зорилго — гэр бүлийн амьдралыг хөнгөвчлөх ухаалаг бүтээгдэхүүн бүтээх. Ингэснээр та бяцхан үртэйгээ илүү их нандин мөчүүдийг хамт өнгөрүүлнэ.",
-    cta: { label: "Бидний тухай", href: "#about" },
+    cta: { label: "Бидний тухай", href: "/#about" },
   },
 
   trust: {
@@ -235,11 +145,11 @@ export const site = {
       {
         heading: "Дэлгүүр",
         links: [
-          { label: "Тэрэг", href: `${STORE}/products?category_id=116291`, external: true },
-          { label: "Машины суудал", href: `${STORE}/products?category_id=116721`, external: true },
-          { label: "Хүүхдийн манеж", href: `${STORE}/products?category_id=338493`, external: true },
-          { label: "Хөлд оруулагч", href: `${STORE}/products?category_id=116724`, external: true },
-          { label: "Хэрэгсэл", href: `${STORE}/products?category_id=156175`, external: true },
+          { label: "Тэрэг", href: "/categories/strollers" },
+          { label: "Машины суудал", href: "/categories/car-seats" },
+          { label: "Хүүхдийн манеж", href: "/categories/beds" },
+          { label: "Хөлд оруулагч", href: "/categories/walkers" },
+          { label: "Хэрэгсэл", href: "/categories/accessories" },
         ],
       },
       {
@@ -253,7 +163,7 @@ export const site = {
       {
         heading: "Компани",
         links: [
-          { label: "Бидний тухай", href: "#about" },
+          { label: "Бидний тухай", href: "/#about" },
           { label: "Онлайн дэлгүүр", href: `${STORE}/products?name=burbay`, external: true },
         ],
       },
@@ -263,7 +173,7 @@ export const site = {
       lines: ["Bolorhon Kids Store", "Улаанбаатар, Монгол"],
       socials: [
         { label: "bolorhonkids.mn", href: STORE },
-        { label: "Facebook", href: "https://facebook.com" }, // TODO: албан ёсны хуудсын холбоос
+        { label: "Facebook", href: "https://facebook.com" },
       ],
     },
     legal: [

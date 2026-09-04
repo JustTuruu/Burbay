@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { ArrowIcon } from "@/components/ui/Icons";
 import { Reveal } from "@/components/ui/Reveal";
@@ -6,10 +8,6 @@ import { images } from "@/lib/images";
 
 const { categories } = site;
 
-/**
- * "Designed around your life" маягийн хэсэг:
- * гарчиг + зураг/текст ээлжлэн байрласан категориуд.
- */
 export function Categories() {
   return (
     <section id="categories" aria-labelledby="categories-heading" className="section bg-white">
@@ -34,20 +32,14 @@ export function Categories() {
                   variant="fade"
                   className={`img-zoom lg:col-span-7 ${flipped ? "lg:order-2 lg:col-start-6" : ""}`}
                 >
-                  <a
-                    href={item.link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={item.link.label}
-                    className="block"
-                  >
+                  <Link href={item.link.href} aria-label={item.link.label} className="block">
                     <EditorialImage
                       asset={images[item.image]}
                       ratio="4/3"
                       sizes="(max-width: 1024px) 100vw, 58vw"
                       className="rounded-2xl"
                     />
-                  </a>
+                  </Link>
                 </Reveal>
 
                 <Reveal
@@ -56,15 +48,10 @@ export function Categories() {
                 >
                   <h3 className="display-md">{item.title}</h3>
                   <p className="body-copy mt-5">{item.body}</p>
-                  <a
-                    href={item.link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-link mt-7 text-navy"
-                  >
+                  <Link href={item.link.href} className="text-link mt-7 text-navy">
                     {item.link.label}
                     <ArrowIcon />
-                  </a>
+                  </Link>
                 </Reveal>
               </article>
             );

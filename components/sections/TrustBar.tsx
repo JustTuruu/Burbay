@@ -3,7 +3,6 @@ import { site } from "@/content/site";
 
 const { trust } = site;
 
-/** "As featured in" маягийн итгэлийн мөр: стандарт, гэрчилгээ */
 export function TrustBar() {
   return (
     <section aria-labelledby="trust-heading" className="border-y border-line bg-white">

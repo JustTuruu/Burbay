@@ -1,14 +1,3 @@
-/**
- * Зургийн сан.
- *
- * Бүх зураг /public/products дотор байгаа — bolorhonkids.mn дээрх
- * Burbay барааны албан ёсны зургууд. `-lg` төгсгөлтэй нь 1500px
- * (hero, категори, баннер), үлдсэн нь 700px (бүтээгдэхүүний карт).
- *
- * `tone`  — зураг ачаалахаас өмнөх дэвсгэр өнгө.
- * `ratio` — зургийн байрлах талбайн харьцаа (layout shift-ээс сэргийлнэ).
- */
-
 export type ImageAsset = {
   src: string;
   alt: string;
@@ -67,7 +56,6 @@ export const images = {
 
 export type ImageKey = keyof typeof images;
 
-/** Бүтээгдэхүүний картын зураг (700px, цагаан дэвсгэр) */
 export function productImage(slug: string, alt: string): ImageAsset {
   return { src: `/products/${slug}.jpg`, alt, tone: white, ratio: "1/1" };
 }

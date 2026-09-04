@@ -7,7 +7,6 @@ import { images } from "@/lib/images";
 
 import "./globals.css";
 
-/** Геометр sans-serif — кирилл (Ө, Ү) бүрэн дэмждэг. */
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
@@ -15,7 +14,7 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const siteUrl = "https://burbay.mn"; // TODO: бодит домэйноор солино
+const siteUrl = "https://burbay.mn";
 const title = "BURBAY — Тансаг зэрэглэлийн хүүхдийн тэрэг, автомашины суудал";
 const description =
   "Burbay — Монгол дахь албан ёсны дистрибьютер. Тансаг зэрэглэлийн хүүхдийн тэрэг, автомашины суудал, гэрийн хэрэгсэл, дагалдах хэрэгслийн албан ёсны танилцуулга.";
@@ -71,10 +70,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="mn" suppressHydrationWarning className={`${montserrat.variable} h-full`}>
       <body className="flex min-h-full flex-col">
-        {/*
-          JS ажиллаж байгааг тэмдэглэнэ. Scroll animation-ууд зөвхөн энэ
-          үед идэвхжих тул JS унтарсан тохиолдолд контент бүрэн харагдана.
-        */}
         <script
           dangerouslySetInnerHTML={{
             __html: `document.documentElement.classList.add("js")`,

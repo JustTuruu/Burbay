@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Gallery } from "@/components/product/Gallery";
@@ -43,25 +44,24 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
     <>
       <article className="bg-white">
         <div className="shell py-8 lg:py-12">
-          {/* Breadcrumb */}
-          <nav aria-label="Замчлал" className="text-[0.75rem] text-muted">
+          <nav aria-label="Замчлал" className="text-[0.8125rem] text-muted">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <a href="/" className="transition-colors hover:text-navy">
+                <Link href="/" className="transition-colors hover:text-navy">
                   Нүүр
-                </a>
+                </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <a href="/products" className="transition-colors hover:text-navy">
+                <Link href="/products" className="transition-colors hover:text-navy">
                   Бүтээгдэхүүн
-                </a>
+                </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <a href={`/products#${product.category}`} className="transition-colors hover:text-navy">
+                <Link href={`/categories/${product.category}`} className="transition-colors hover:text-navy">
                   {category.label}
-                </a>
+                </Link>
               </li>
               <li aria-hidden>/</li>
               <li className="text-navy">{heading}</li>
@@ -82,31 +82,20 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 {site.brand.name} {heading}
               </h1>
 
-              <div className="mt-6 flex flex-wrap items-baseline gap-3">
-                <p className="text-[1.5rem] font-medium">{product.price}</p>
-                {product.oldPrice ? (
-                  <p className="text-[1rem] text-muted line-through">{product.oldPrice}</p>
-                ) : null}
-                {product.discount ? (
-                  <span className="rounded-full bg-stone px-3 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-navy">
-                    {product.discount}
-                  </span>
-                ) : null}
-              </div>
+              <p className="mt-6 text-[1.5rem] font-medium">{product.price}</p>
 
               {product.short ? <p className="body-copy mt-6">{product.short}</p> : null}
 
-              {/* Өнгөний хувилбарууд */}
               {variants.length > 1 ? (
                 <div className="mt-8">
                   <p className="meta text-muted">Өнгө</p>
                   <ul className="mt-3 flex flex-wrap gap-2">
                     {variants.map((v) => (
                       <li key={v.slug}>
-                        <a
+                        <Link
                           href={`/products/${v.slug}`}
                           aria-current={v.slug === product.slug ? "true" : undefined}
-                          className={`flex items-center gap-2 rounded-full border px-3.5 py-2 text-[0.8125rem] transition-colors ${
+                          className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-[0.875rem] transition-colors ${
                             v.slug === product.slug
                               ? "border-navy bg-navy text-white"
                               : "border-line text-slate hover:border-navy hover:text-navy"
@@ -118,7 +107,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                             style={{ backgroundColor: v.swatches[0] }}
                           />
                           {v.color || v.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -135,11 +124,11 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                   Захиалах
                   <ArrowIcon />
                 </a>
-                <a href="/products" className="text-link text-navy">
+                <Link href="/products" className="text-link text-navy">
                   Бүх бүтээгдэхүүн
-                </a>
+                </Link>
               </div>
-              <p className="mt-4 text-[0.75rem] leading-relaxed text-muted">
+              <p className="mt-4 text-[0.8125rem] leading-relaxed text-muted">
                 Захиалга манай онлайн дэлгүүр {site.store.name} ({new URL(product.storeUrl).host}) дээр
                 хийгдэнэ. 72 цагийн дотор хүргэлт, StorePay / ArdPay / LendMN-ээр хуваан төлөх боломжтой.
               </p>
@@ -148,14 +137,13 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                 {facts.map((fact) => (
                   <div key={fact.label}>
                     <dt className="meta text-muted">{fact.label}</dt>
-                    <dd className="mt-1.5 text-[0.9375rem] font-medium">{fact.value}</dd>
+                    <dd className="mt-1.5 text-[1rem] font-medium">{fact.value}</dd>
                   </div>
                 ))}
               </dl>
             </div>
           </div>
 
-          {/* Дэлгэрэнгүй тайлбар */}
           {product.sections.length > 0 || product.paragraphs.length > 0 ? (
             <section aria-labelledby="details-heading" className="mt-16 border-t border-line pt-14 lg:mt-24">
               <div className="grid gap-10 lg:grid-cols-12">
@@ -171,7 +159,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
                       {section.title ? <h3 className="meta text-muted">{section.title}</h3> : null}
                       <ul className="mt-4 space-y-3">
                         {section.items.map((item) => (
-                          <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed text-slate">
+                          <li key={item} className="flex gap-3 text-[1rem] leading-relaxed text-slate">
                             <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy" />
                             {item}
                           </li>
@@ -202,9 +190,9 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               <h2 id="related-heading" className="display-md">
                 Төстэй бүтээгдэхүүн
               </h2>
-              <a href={`/products#${product.category}`} className="text-link text-navy">
+              <Link href={`/categories/${product.category}`} className="text-link text-navy">
                 Бүх {category.label.toLowerCase()}
-              </a>
+              </Link>
             </div>
             <ul className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((p) => (

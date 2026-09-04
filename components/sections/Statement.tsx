@@ -1,9 +1,10 @@
+import Link from "next/link";
+
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
 
 const { statement } = site;
 
-/** Брэндийн зорилгын том, төвд байрлах мэдэгдэл */
 export function Statement() {
   return (
     <section id="about" aria-label="Бидний зорилго" className="section bg-white">
@@ -12,9 +13,9 @@ export function Statement() {
           <p className="statement-text">
             {statement.text}
           </p>
-          <a href={statement.cta.href} className="btn btn-outline mt-10">
+          <Link href={statement.cta.href} className="btn btn-outline mt-10">
             {statement.cta.label}
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>

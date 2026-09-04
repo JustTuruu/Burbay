@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import type { Product } from "@/content/products";
 import { site } from "@/content/site";
@@ -8,65 +10,51 @@ type ProductCardProps = {
   sizes?: string;
 };
 
-/** Nuna маягийн бүтээгдэхүүний карт — дэлгэрэнгүй хуудас руу холбогдоно */
 export function ProductCard({
   product,
   sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw",
 }: ProductCardProps) {
   const label = product.color ? `${product.name} · ${product.color}` : product.name;
-  const subtitle = [product.group !== product.name ? product.age : "", product.color]
-    .filter(Boolean)
-    .join(" · ");
+  const subtitle = [product.color, product.age].filter(Boolean).join(" · ");
 
   return (
-    <a href={`/products/${product.slug}`} className="group block">
-      <div className="img-zoom relative">
+    <Link href={`/products/${product.slug}`} className="card group">
+      <div className="img-zoom relative border-b border-line">
         <EditorialImage
           asset={productImage(product.slug, `${site.brand.name} ${label}`)}
           ratio="1/1"
           fit="contain"
           sizes={sizes}
-          className="rounded-2xl bg-white"
-          imageClassName="p-4"
+          className="bg-white"
+          imageClassName="p-5"
         />
-        <div className="absolute left-4 top-4 flex gap-2">
-          {product.badge ? (
-            <span className="rounded-full bg-navy px-3 py-1.5 text-[0.625rem] font-semibold uppercase tracking-[0.16em] text-white">
-              {product.badge}
-            </span>
-          ) : null}
-          {product.discount ? (
-            <span className="rounded-full bg-stone px-3 py-1.5 text-[0.625rem] font-semibold uppercase tracking-[0.16em] text-navy">
-              {product.discount}
-            </span>
-          ) : null}
-        </div>
+        {product.badge ? (
+          <span className="absolute left-4 top-4 rounded-full bg-navy px-3.5 py-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-white">
+            {product.badge}
+          </span>
+        ) : null}
       </div>
 
-      <div className="mt-5 flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-[0.9375rem] font-medium">
-            {site.brand.name} {product.name}
-          </h3>
-          <p className="mt-1 text-[0.8125rem] text-muted">{subtitle || product.age || " "}</p>
-        </div>
-        <div className="shrink-0 text-right">
-          <p className="text-[0.875rem] font-medium">{product.price}</p>
-          {product.oldPrice ? (
-            <p className="mt-0.5 text-[0.75rem] text-muted line-through">{product.oldPrice}</p>
-          ) : null}
-        </div>
-      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-[1.0625rem] font-medium leading-snug text-navy">
+          {site.brand.name} {product.name}
+        </h3>
+        {subtitle ? <p className="mt-1.5 text-[0.9375rem] text-muted">{subtitle}</p> : null}
 
-      <ul aria-label="Өнгө" className="mt-3 flex gap-2">
-        {product.swatches.map((color) => (
-          <li
-            key={color}
-            className="h-3.5 w-3.5 rounded-full ring-1 ring-line ring-offset-1 ring-offset-stone"
-            style={{ backgroundColor: color }}
-          />
-        ))}
-      </ul>
-    </a>
+        {product.swatches.length > 0 ? (
+          <ul aria-label="Өнгө" className="mt-4 flex gap-2">
+            {product.swatches.map((color) => (
+              <li
+                key={color}
+                className="h-4 w-4 rounded-full ring-1 ring-line ring-offset-2 ring-offset-white"
+                style={{ backgroundColor: color }}
+              />
+            ))}
+          </ul>
+        ) : null}
+
+        <p className="mt-auto pt-5 text-[1.125rem] font-semibold text-navy">{product.price}</p>
+      </div>
+    </Link>
   );
 }

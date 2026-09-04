@@ -6,20 +6,13 @@ type RevealVariant = "up" | "fade";
 
 type RevealProps = {
   children: ReactNode;
-  /** Ямар tag-аар render хийх (жишээ нь "li", "figure") */
   as?: ElementType;
   variant?: RevealVariant;
-  /** Хөдөлгөөн эхлэх хойшлолт (ms) */
   delay?: number;
   className?: string;
   style?: CSSProperties;
 };
 
-/**
- * Scroll хийхэд контентыг зөөлөн гаргаж ирэх wrapper.
- * Бодит анимацийг globals.css доторх `[data-reveal]` дүрмүүд хийнэ —
- * JS ачаалагдаагүй үед контент шууд харагдана.
- */
 export function Reveal({
   children,
   as: Tag = "div",

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -29,8 +30,11 @@ export function SiteHeader() {
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState<string>(nav[0].id);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [spySection, setSpySection] = useState<string>(nav[0].id);
+
+  const routeCategory = pathname.startsWith("/categories/") ? pathname.split("/")[2] : "";
+  const active = isHome ? spySection : routeCategory;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -39,13 +43,9 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* Scroll-spy (зөвхөн нүүр хуудсанд): аль хэсэг дэлгэцэн дээр байгааг тааруулж active таб солино */
   useEffect(() => {
-    if (!isHome) {
-      setActive("");
-      return;
-    }
-    setActive(nav[0].id);
+    if (!isHome) return;
+
     const sections = nav
       .map((item) => document.getElementById(item.id))
       .filter((node): node is HTMLElement => node !== null);
@@ -56,14 +56,14 @@ export function SiteHeader() {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
+        if (visible) setSpySection(visible.target.id);
       },
       { rootMargin: "-35% 0px -55% 0px", threshold: [0, 0.1, 0.5] },
     );
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, [isHome, pathname]);
+  }, [isHome]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -91,32 +91,29 @@ export function SiteHeader() {
           scrolled ? "shadow-[0_1px_0_0_var(--color-line)]" : ""
         }`}
       >
-        <div className="shell flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
-          {/* Лого */}
-          <a href="/" aria-label={`${brand.name} — нүүр хуудас`} className="flex shrink-0 items-center">
+        <div className="shell flex h-[4.5rem] items-center justify-between gap-6 lg:h-[5.25rem]">
+          <Link href="/" aria-label={`${brand.name} — нүүр хуудас`} className="flex shrink-0 items-center">
             <Image
               src="/brand/logo.png"
               unoptimized
               alt={brand.name}
-              width={210}
-              height={80}
+              width={945}
+              height={275}
               preload
-              className="h-8 w-auto lg:h-9"
+              className="h-10 w-auto lg:h-12"
             />
-          </a>
+          </Link>
 
-          {/* Таб маягийн цэс (desktop) */}
           <nav aria-label="Үндсэн цэс" className="hidden lg:block">
             <ul className="flex items-center gap-1 rounded-2xl bg-stone p-1.5">
               {nav.map((item) => {
                 const isActive = active === item.id;
                 return (
                   <li key={item.id} className="group relative">
-                    <a
+                    <Link
                       href={item.href}
-                      onClick={() => setActive(item.id)}
                       aria-current={isActive ? "true" : undefined}
-                      className={`flex items-center gap-1.5 rounded-xl px-5 py-2.5 text-[0.8125rem] font-medium transition-colors duration-300 ${
+                      className={`flex items-center gap-1.5 rounded-xl px-5 py-2.5 text-[0.875rem] font-medium transition-colors duration-300 ${
                         isActive
                           ? "bg-white text-navy shadow-[0_1px_2px_rgba(26,41,66,0.08)]"
                           : "text-muted hover:text-navy"
@@ -132,20 +129,19 @@ export function SiteHeader() {
                       {hasChildren(item) ? (
                         <ChevronDownIcon className="transition-transform duration-300 group-hover:rotate-180" />
                       ) : null}
-                    </a>
+                    </Link>
 
-                    {/* Dropdown */}
                     {hasChildren(item) ? (
                       <div className="invisible absolute left-0 top-full z-10 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                         <ul className="min-w-[13rem] rounded-xl border border-line bg-white p-2 shadow-[0_18px_40px_-20px_rgba(26,41,66,0.35)]">
                           {item.children.map((child) => (
                             <li key={child.label}>
-                              <a
+                              <Link
                                 href={child.href}
-                                className="block rounded-lg px-3.5 py-2.5 text-[0.8125rem] text-slate transition-colors hover:bg-stone hover:text-navy"
+                                className="block rounded-lg px-4 py-3 text-[0.875rem] text-slate transition-colors hover:bg-stone hover:text-navy"
                               >
                                 {child.label}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -157,15 +153,14 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          {/* Баруун: icon-ууд + гар утасны цэс */}
           <div className="-mr-2 flex shrink-0 items-center gap-1">
-            <a
+            <Link
               href="/products"
-              aria-label={header.search}
+              aria-label={header.products}
               className="flex h-11 w-11 items-center justify-center transition-opacity hover:opacity-70"
             >
               <SearchIcon />
-            </a>
+            </Link>
             <a
               href={store.url}
               target="_blank"
@@ -189,7 +184,6 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Бүдэгрүүлэх дэвсгэр */}
       <button
         type="button"
         tabIndex={-1}
@@ -200,7 +194,6 @@ export function SiteHeader() {
         }`}
       />
 
-      {/* Гар утасны drawer — босоо жагсаалт, дэд цэстэй нь chevron-той */}
       <aside
         id="mobile-menu"
         role="dialog"
@@ -211,14 +204,14 @@ export function SiteHeader() {
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex h-16 items-center justify-between border-b border-line px-6">
+        <div className="flex h-[4.5rem] items-center justify-between border-b border-line px-6">
           <Image
             src="/brand/logo.png"
             unoptimized
             alt={brand.name}
-            width={210}
-            height={80}
-            className="h-7 w-auto"
+            width={945}
+            height={275}
+            className="h-9 w-auto"
           />
           <button
             type="button"
@@ -238,7 +231,7 @@ export function SiteHeader() {
               return (
                 <li key={item.id} className="border-b border-line">
                   <div className="flex items-center">
-                    <a
+                    <Link
                       href={item.href}
                       onClick={close}
                       className={`flex-1 px-6 py-5 text-[1.05rem] font-medium ${
@@ -246,7 +239,7 @@ export function SiteHeader() {
                       }`}
                     >
                       {item.label}
-                    </a>
+                    </Link>
                     {hasChildren(item) ? (
                       <button
                         type="button"
@@ -266,13 +259,13 @@ export function SiteHeader() {
                     <ul className="bg-stone/60 pb-2">
                       {item.children.map((child) => (
                         <li key={child.label}>
-                          <a
+                          <Link
                             href={child.href}
                             onClick={close}
                             className="block px-8 py-3 text-[0.9375rem] text-slate"
                           >
                             {child.label}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -283,10 +276,15 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="border-t border-line px-6 py-6 text-[0.75rem] text-muted">
-          {brand.role}
-          <br />
-          {brand.city}
+        <div className="border-t border-line p-6">
+          <Link href="/products" onClick={close} className="btn btn-solid w-full">
+            {header.products}
+          </Link>
+          <p className="mt-5 text-[0.8125rem] text-muted">
+            {brand.role}
+            <br />
+            {brand.city}
+          </p>
         </div>
       </aside>
     </>

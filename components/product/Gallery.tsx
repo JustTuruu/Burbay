@@ -8,7 +8,6 @@ type GalleryProps = {
   alt: string;
 };
 
-/** Бүтээгдэхүүний зургийн галерей: том зураг + жижиг сонголтууд */
 export function Gallery({ images, alt }: GalleryProps) {
   const [index, setIndex] = useState(0);
   const current = images[Math.min(index, images.length - 1)];

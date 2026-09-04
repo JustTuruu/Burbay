@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
@@ -5,7 +7,6 @@ import { images } from "@/lib/images";
 
 const { systemBanner } = site;
 
-/** Хоёр баганатай баннер: бүтээгдэхүүний зураг + онцлог тайлбар */
 export function SystemBanner() {
   return (
     <section id="system" aria-labelledby="system-heading" className="bg-white">
@@ -28,14 +29,9 @@ export function SystemBanner() {
               {systemBanner.heading}
             </h2>
             <p className="body-copy mt-6 max-w-[46ch]">{systemBanner.body}</p>
-            <a
-              href={systemBanner.cta.href}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-outline mt-9"
-            >
+            <Link href={systemBanner.cta.href} className="btn btn-outline mt-9">
               {systemBanner.cta.label}
-            </a>
+            </Link>
           </Reveal>
         </div>
       </div>

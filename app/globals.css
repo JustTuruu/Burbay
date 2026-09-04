@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-/* ---------------------------------------------------------------------------
-   BURBAY — дизайн систем (Nuna-гийн хэв маяг)
-   Цэвэрхэн цагаан + дулаан цайвар саарал дэвсгэр, тэнгэрийн хөх (navy)
-   текст, геометр sans-serif. Кирилл (Ө, Ү) бүрэн дэмжигдсэн.
---------------------------------------------------------------------------- */
-
 @theme {
   --color-navy: #1a2942;
   --color-navy-deep: #111c30;
@@ -58,8 +52,6 @@
   }
 }
 
-/* --- Layout primitives ---------------------------------------------------- */
-
 .shell {
   width: 100%;
   max-width: 90rem;
@@ -71,10 +63,8 @@
   padding-block: clamp(4rem, 8vw, 7.5rem);
 }
 
-/* --- Typography ----------------------------------------------------------- */
-
 .eyebrow {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -102,16 +92,16 @@
 }
 
 .lede {
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-slate);
 }
 
 .body-copy {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.8;
+  line-height: 1.75;
   color: var(--color-slate);
 }
 
@@ -124,24 +114,22 @@
 }
 
 .meta {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-
-/* --- Товч, холбоос -------------------------------------------------------- */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  min-height: 3rem;
-  padding: 0 1.9rem;
+  min-height: 3.25rem;
+  padding: 0 2rem;
   border-radius: 9999px;
   border: 1px solid transparent;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -183,14 +171,13 @@
   background-color: var(--color-stone);
 }
 
-/* Доогуур зураастай uppercase холбоос (Nuna-гийн "SHOP NOW" маягийн) */
 .text-link {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding-bottom: 0.4rem;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -212,7 +199,23 @@
   transform: scaleX(0.6);
 }
 
-/* --- Зургийн hover ---------------------------------------------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  background-color: var(--color-white);
+  transition: border-color 0.35s var(--ease-soft), box-shadow 0.35s var(--ease-soft),
+    transform 0.35s var(--ease-soft);
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--color-navy) 22%, var(--color-line));
+  box-shadow: 0 22px 45px -28px rgba(26, 41, 66, 0.45);
+  transform: translateY(-2px);
+}
 
 .img-zoom img {
   transition: transform 1.1s var(--ease-soft);
@@ -221,8 +224,6 @@
 .img-zoom:hover img {
   transform: scale(1.03);
 }
-
-/* --- Scroll reveal (зөвхөн JS ажиллах үед) -------------------------------- */
 
 .js [data-reveal] {
   opacity: 0;
@@ -251,4 +252,3 @@
     transition: none;
   }
 }
-
