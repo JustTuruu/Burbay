@@ -24,11 +24,11 @@ export function FeaturedProducts() {
           </Link>
         </Reveal>
 
-        <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProducts.map((product, index) => (
-            <Reveal key={product.slug} as="li" delay={(index % 4) * 80}>
+        <ul className="scroll-row mt-12">
+          {featuredProducts.map((product) => (
+            <li key={product.slug} className="h-full">
               <ProductCard product={product} />
-            </Reveal>
+            </li>
           ))}
         </ul>
       </div>

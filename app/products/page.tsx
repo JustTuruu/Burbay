@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { CategoryTabs } from "@/components/product/CategoryTabs";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { categoryMeta, categoryOrder, products } from "@/content/products";
 
@@ -20,10 +19,6 @@ export default function ProductsPage() {
           <p className="lede mt-4 max-w-[42rem]">
             {products.length} бараа. Дэлгэрэнгүй мэдээллийг эндээс, захиалгыг манай онлайн дэлгүүрээс.
           </p>
-
-          <div className="mt-8">
-            <CategoryTabs active="all" />
-          </div>
         </div>
       </section>
 

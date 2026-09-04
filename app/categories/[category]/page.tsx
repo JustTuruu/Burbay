@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { CategoryTabs } from "@/components/product/CategoryTabs";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { categoryMeta, categoryOrder, products, type Category } from "@/content/products";
 
@@ -37,10 +36,6 @@ export default async function CategoryPage({ params }: PageProps<"/categories/[c
           <h1 className="display-lg mt-4">{meta.label}</h1>
           <p className="lede mt-4 max-w-[42rem]">{meta.description}</p>
           <p className="body-copy mt-3">{items.length} бараа</p>
-
-          <div className="mt-8">
-            <CategoryTabs active={category} />
-          </div>
         </div>
       </section>
 

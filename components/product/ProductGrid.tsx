@@ -14,7 +14,7 @@ export function ProductGrid({ products, grouped = true }: ProductGridProps) {
 
   if (!grouped || groups.length <= 1) {
     return (
-      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="scroll-row">
         {products.map((product) => (
           <li key={product.slug} className="h-full">
             <ProductCard product={product} />
@@ -31,7 +31,7 @@ export function ProductGrid({ products, grouped = true }: ProductGridProps) {
           <h3 id={`${group}-heading`} className="meta mb-6 text-muted">
             {groupMeta[group] ?? group}
           </h3>
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="scroll-row">
             {products
               .filter((product) => product.group === group)
               .map((product) => (
