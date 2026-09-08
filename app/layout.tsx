@@ -15,9 +15,9 @@ const montserrat = Montserrat({
 });
 
 const siteUrl = "https://burbay.mn";
-const title = "BURBAY — Тансаг зэрэглэлийн хүүхдийн тэрэг, автомашины суудал";
+const title = "BURBAY Mongolia — Хамтдаа туулах гайхалтай аялал";
 const description =
-  "Burbay — Монгол дахь албан ёсны дистрибьютер. Тансаг зэрэглэлийн хүүхдийн тэрэг, автомашины суудал, гэрийн хэрэгсэл, дагалдах хэрэгслийн албан ёсны танилцуулга.";
+  "BURBAY брэндийн Монгол дахь албан ёсны төлөөлөгч. Хүүхдийн тэрэг, машины суудал, манеж, дагалдах хэрэгслийн танилцуулга. Бөөний захиалга, хамтын ажиллагаа, үнийн санал.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: images.hero.src,
-        width: 1200,
-        height: 630,
+        width: 1500,
+        height: 1500,
         alt: images.hero.alt,
       },
     ],
@@ -68,13 +68,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="mn" suppressHydrationWarning className={`${montserrat.variable} h-full`}>
+    <html lang="mn" className={`${montserrat.variable} h-full`}>
       <body className="flex min-h-full flex-col">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.classList.add("js")`,
-          }}
-        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[60] focus:bg-navy focus:px-5 focus:py-3 focus:text-white"

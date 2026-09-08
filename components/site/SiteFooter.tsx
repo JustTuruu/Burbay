@@ -1,95 +1,67 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { GithubIcon } from "@/components/ui/Icons";
-
-import { SmartLink } from "@/components/ui/SmartLink";
+import { ArrowIcon, GlobeIcon } from "@/components/ui/Icons";
 import { site } from "@/content/site";
 
-const { footer, brand } = site;
-
 export function SiteFooter() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer id="contact" className="bg-stone text-navy">
-      <div className="shell py-14 lg:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.2fr]">
+    <footer className="site-footer">
+      <div className="shell">
+        <div className="footer-top">
           <div>
-            <SmartLink href="/" aria-label={`${brand.name} — нүүр хуудас`} className="inline-flex">
+            <Link href="/" aria-label="BURBAY — нүүр хуудас">
               <Image
                 src="/brand/logo.png"
-                unoptimized
-                alt={brand.name}
+                alt="BURBAY"
                 width={945}
                 height={275}
-                className="h-10 w-auto"
+                unoptimized
+                className="footer-logo"
               />
-            </SmartLink>
-            <p className="mt-6 max-w-[18rem] text-[0.875rem] leading-relaxed text-slate">
-              {footer.note}
-            </p>
+            </Link>
+            <p className="footer-note">{site.footer.note}</p>
           </div>
-
-          {footer.columns.map((column) => (
-            <div key={column.heading}>
-              <h3 className="meta">{column.heading}</h3>
-              <ul className="mt-6 space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.href}>
-                    <SmartLink
-                      href={link.href}
-                      className="text-[0.875rem] text-slate transition-colors hover:text-navy"
-                    >
-                      {link.label}
-                    </SmartLink>
+          <div className="footer-links">
+            <div>
+              <h2 className="eyebrow">Цуглуулга</h2>
+              <ul>
+                {site.collections.map((item) => (
+                  <li key={item.id}>
+                    <Link href={`/#${item.id}`}>{item.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
-
-          <div>
-            <h3 className="meta">{footer.contact.heading}</h3>
-            <ul className="mt-6 space-y-3 text-[0.875rem] text-slate">
-              {footer.contact.lines.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-            <ul className="mt-6 flex gap-5">
-              {footer.contact.socials.map((social) => (
-                <li key={social.href}>
-                  <SmartLink href={social.href} className="text-link text-navy">
-                    {social.label}
-                  </SmartLink>
+            <div>
+              <h2 className="eyebrow">BURBAY MONGOLIA</h2>
+              <ul>
+                <li>
+                  <Link href="/#about">Бидний тухай</Link>
                 </li>
-              ))}
-            </ul>
+                <li>
+                  <Link href="/#contact">Хамтын ажиллагаа</Link>
+                </li>
+                <li>
+                  <Link href="/#contact">
+                    Холбоо барих <ArrowIcon />
+                  </Link>
+                </li>
+              </ul>
+              <p className="footer-location">
+                <GlobeIcon /> {site.brand.city}
+              </p>
+            </div>
           </div>
         </div>
-
-        <div className="mt-14 flex flex-col gap-4 border-t border-line pt-7 text-[0.8125rem] text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="footer-bottom">
           <p>
-            © {year} {brand.legalName}. Бүх эрх хуулиар хамгаалагдсан.
+            © {new Date().getFullYear()} {site.brand.legalName}. Бүх эрх
+            хуулиар хамгаалагдсан.
           </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <ul className="flex gap-6">
-              {footer.legal.map((link) => (
-                <li key={link.href}>
-                  <SmartLink href={link.href} className="transition-colors hover:text-navy">
-                    {link.label}
-                  </SmartLink>
-                </li>
-              ))}
-            </ul>
-
-            <SmartLink
-              href={footer.developer.href}
-              className="inline-flex items-center gap-2 transition-colors hover:text-navy"
-            >
-              <GithubIcon />
-              {footer.developer.label}
-            </SmartLink>
-          </div>
+          <a href={site.footer.developer.href} target="_blank" rel="noreferrer">
+            Website by {site.footer.developer.label}
+          </a>
         </div>
       </div>
     </footer>

@@ -95,3 +95,25 @@ export function GithubIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function GlobeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a17 17 0 0 1 0 18 17 17 0 0 1 0-18Z" />
+    </svg>
+  );
+}
+
+export function WeChatIcon(props: IconProps) {
+  return (
+    <svg {...base} width={30} height={30} {...props}>
+      <path d="M13.5 14.5a7 7 0 0 1-4 1.2 8 8 0 0 1-2.5-.4L3 17l1.2-3.3A5.8 5.8 0 0 1 2 9.3C2 5.8 5.4 3 9.5 3S17 5.8 17 9.3" />
+      <path d="M22 14.5c0 2-1 3.6-2.7 4.7l.7 2.3-2.7-1.1a8 8 0 0 1-2.3.3c-3.8 0-7-2.8-7-6.2s3.2-6.2 7-6.2 7 2.8 7 6.2Z" />
+      <path
+        d="M6.5 8h.1M11.5 8h.1M12.5 13.5h.1M17.5 13.5h.1"
+        strokeWidth={2.5}
+      />
+    </svg>
+  );
+}

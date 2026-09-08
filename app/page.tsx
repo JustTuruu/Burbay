@@ -1,19 +1,23 @@
+import { CatalogueNavigation } from "@/components/sections/CatalogueNavigation";
 import { Categories } from "@/components/sections/Categories";
-import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
+import { CollectionIndex } from "@/components/sections/CollectionIndex";
+import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { Statement } from "@/components/sections/Statement";
-import { SystemBanner } from "@/components/sections/SystemBanner";
-import { TrustBar } from "@/components/sections/TrustBar";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <SystemBanner />
-      <Categories />
-      <FeaturedProducts />
+      <CollectionIndex />
+      <div className="catalogue-layout">
+        <CatalogueNavigation />
+        <div className="catalogue-content">
+          <Categories />
+        </div>
+      </div>
       <Statement />
-      <TrustBar />
+      <Contact />
     </>
   );
 }

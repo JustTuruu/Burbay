@@ -1,39 +1,54 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { EditorialImage } from "@/components/ui/EditorialImage";
+import { ArrowIcon } from "@/components/ui/Icons";
 import { site } from "@/content/site";
 import { images } from "@/lib/images";
 
-const { hero } = site;
-
 export function Hero() {
   return (
-    <section id="top" aria-label={hero.heading} className="bg-stone text-navy">
-      <div className="shell grid items-center gap-10 py-12 lg:min-h-[min(calc(100svh-5.25rem),52rem)] lg:grid-cols-12 lg:gap-8 lg:py-16">
-        <div className="order-2 max-w-[34rem] lg:order-1 lg:col-span-5">
-          <p className="eyebrow text-slate">{hero.eyebrow}</p>
-          <h1 className="display-xl mt-5">{hero.heading}</h1>
-          <p className="lede mt-6 max-w-[30rem]">{hero.body}</p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Link href={hero.cta.href} className="btn btn-solid">
-              {hero.cta.label}
-            </Link>
-            <Link href={hero.secondary.href} className="text-link text-navy">
-              {hero.secondary.label}
-            </Link>
-          </div>
+    <section id="top" className="hero" aria-labelledby="hero-heading">
+      <div className="hero-copy">
+        <p className="eyebrow">{site.hero.eyebrow}</p>
+        <h1 id="hero-heading">
+          {site.hero.heading[0]}
+          <br />
+          <span>{site.hero.heading[1]}</span>
+        </h1>
+        <p className="hero-description">{site.hero.body}</p>
+        <Link href="#collections" className="btn btn-solid">
+          {site.hero.cta} <ArrowIcon />
+        </Link>
+        <div className="hero-caption">
+          <span className="fine-line" />
+          <span>
+            DESIGNED FOR LITTLE ONES.
+            <br />
+            MADE FOR LIFE TOGETHER.
+          </span>
         </div>
-
-        <div className="order-1 lg:order-2 lg:col-span-7">
-          <EditorialImage
-            asset={images.hero}
-            ratio="1/1"
-            fit="cover"
-            eager
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            className="rounded-2xl lg:max-h-[46rem]"
-          />
-        </div>
+      </div>
+      <div className="hero-media">
+        <Image
+          src={images.hero.src}
+          alt={images.hero.alt}
+          fill
+          preload
+          quality={90}
+          sizes="(max-width: 760px) 100vw, 58vw"
+          className="hero-image"
+        />
+        <Link
+          href="/products/single-stroller-0-4"
+          className="hero-product-link"
+        >
+          <span>
+            BURBAY STROLLERS<span>Өдөр бүрийн аяллын хамтрагч</span>
+          </span>
+          <span className="round-arrow">
+            <ArrowIcon />
+          </span>
+        </Link>
       </div>
     </section>
   );
