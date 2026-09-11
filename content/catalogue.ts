@@ -6,6 +6,20 @@ export type CatalogueImage = {
   blend?: "multiply" | "normal";
 };
 
+export const catalogueOrder = [
+  "j02-grey",
+  "pc600-green",
+  "e77-dark-grey",
+  "j01-green",
+  "e77-light-grey",
+  "pc600-khaki",
+  "pc600-grey",
+  "e83-black",
+  "e83-ginger",
+  "e83-iron-grey",
+  "2in1-stroller",
+];
+
 export const catalogueImages: Record<string, CatalogueImage> = {
   "j02-grey": { src: "/products/gallery/j02-grey-6.jpg" },
   "j01-green": { src: "/products/gallery/j01-green-1.jpg" },

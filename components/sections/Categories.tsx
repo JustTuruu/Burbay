@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { ArrowIcon } from "@/components/ui/Icons";
+import { catalogueOrder } from "@/content/catalogue";
 import { categoryMeta, products, type Category } from "@/content/products";
 
 const strollerGroups = ["3in1", "2in1", "single", "light"];
@@ -52,7 +53,8 @@ export function Categories() {
     .filter((product) => product.category === "strollers")
     .sort(
       (a, b) =>
-        strollerGroups.indexOf(a.group) - strollerGroups.indexOf(b.group),
+        strollerGroups.indexOf(a.group) - strollerGroups.indexOf(b.group) ||
+        catalogueOrder.indexOf(a.slug) - catalogueOrder.indexOf(b.slug),
     );
   return (
     <>

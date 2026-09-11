@@ -49,17 +49,24 @@ export function CatalogueNavigation() {
 
   useEffect(() => {
     const nav = navRef.current;
-    if (!nav || !window.matchMedia("(max-width: 1179px)").matches) return;
-    const link = nav.querySelector<HTMLAnchorElement>(
-      '[aria-current="location"]',
-    );
-    if (!link) return;
-    nav.scrollTo({
-      left: link.offsetLeft - nav.clientWidth / 2 + link.offsetWidth / 2,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "instant"
-        : "smooth",
-    });
+    if (!nav) return;
+    const centerActiveLink = () => {
+      if (!window.matchMedia("(max-width: 1179px)").matches) return;
+      const link = nav.querySelector<HTMLAnchorElement>(
+        '[aria-current="location"]',
+      );
+      if (!link) return;
+      nav.scrollTo({
+        left: link.offsetLeft - nav.clientWidth / 2 + link.offsetWidth / 2,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    };
+    const observer = new ResizeObserver(centerActiveLink);
+    observer.observe(nav);
+    centerActiveLink();
+    return () => observer.disconnect();
   }, [active]);
 
   return (

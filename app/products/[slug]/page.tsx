@@ -111,7 +111,7 @@ export default async function ProductPage({
               ))}
             </dl>
             <Link href="/#contact" className="btn btn-solid">
-              Үнийн санал авах <ArrowIcon />
+              Холбогдох <ArrowIcon />
             </Link>
             <p className="inquiry-note">
               Бөөний захиалга, нийлүүлэлтийн нөхцөл болон үнийн саналыг манай
