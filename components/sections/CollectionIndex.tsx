@@ -18,7 +18,6 @@ export function CollectionIndex() {
           Бүхнийг бодолцсон.
         </h2>
         <p>
-          Өдөр тутмын алхмаас анхны аялал хүртэл —
           <br className="desktop-break" /> гэр бүлийн тань хэмнэлд нийцэх
           цуглуулга.
         </p>
